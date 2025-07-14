@@ -1,0 +1,224 @@
+[
+  {
+    "file": ".envs",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "DJANGO_SETTINGS_MODULE=django_multitenant.tests.settings\n"
+  },
+  {
+    "file": ".gitignore",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "*.pyc\n*~\n.env/*\ndjango_multitenant.egg-info/\n.venv\n.tox/\nvenv/*\ncoverage.xml\n.coverage\nbuild/*\ndist/*"
+  },
+  {
+    "file": ".prospector.yaml",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "test-warnings: true\ndoc-warnings: false\nmember-warnings: false\n\nuses:\n  -django\n\npylint:\n  disable:\n    - import-outside-toplevel\n    - unused-variable\n    - not-an-iterable\n    - unsubscriptable-obje"
+  },
+  {
+    "file": ".readthedocs.yaml",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "version: 2\n\nbuild:\n  os: \"ubuntu-22.04\"\n  tools:\n    python: \"3.11\"\n\n# Build from the docs/ directory with Sphinx\nsphinx:\n  configuration: docs/source/conf.py\n\n# Explicitly set the version of Python a"
+  },
+  {
+    "file": "CHANGELOG.md",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "### Django-Multitenant v4.1.1 (December 18, 2023) ###\n\n* Fix utils to not require TENANT_USE_ASGIREF to be defined in the host django project (#206)\n\n### Django-Multitenant v4.1.0 (December 14, 2023) "
+  },
+  {
+    "file": "CONTRIBUTING.md",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "## Contributing\n\nThis project welcomes contributions and suggestions. Most contributions\nrequire you to agree to a Contributor License Agreement (CLA) declaring that\nyou have the right to, and actuall"
+  },
+  {
+    "file": "LICENSE",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "Copyright (c) 2018, Citus Data Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of\nthis software and associated documentation files (the \"Software\"), to deal in\nthe S"
+  },
+  {
+    "file": "Makefile",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "export DJANGO_SETTINGS_MODULE=django_multitenant.tests.settings\n\ntest-dependencies:\n\tpip install -r requirements/test-requirements.txt \n\tpip install Django==\"${DJANGO_VERSION}\"\n\tpip install djangorest"
+  },
+  {
+    "file": "README.md",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# django-multitenant <br>[![Build Status](https://github.com/citusdata/django-multitenant/actions/workflows/django-multitenant-tests.yml/badge.svg)](https://github.com/citusdata/django-multitenant/act"
+  },
+  {
+    "file": "base_gha_image/Dockerfile",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# vim:set ft=dockerfile:\nFROM ubuntu:jammy\nARG DEBIAN_FRONTEND=noninteractive\n\nSHELL [\"/bin/bash\", \"-ec\"]\n\nRUN apt-get update && apt-get install -y \\\n    apt-transport-https \\\n    ca-certificates \\\n  "
+  },
+  {
+    "file": "django_multitenant/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# -*- coding: utf-8 -*-\nimport django\n\nversion = (2, 3, 2)\n\n__version__ = \".\".join(map(str, version))\n\n# default_app_config is auto detected for versions 3.2 and higher:\n# https://docs.djangoproject.c"
+  },
+  {
+    "file": "django_multitenant/apps.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# -*- coding: utf-8 -*-\nfrom django.apps import AppConfig\n\n\nclass MultitenantConfig(AppConfig):\n    name = \"django_multitenant\"\n    verbose_name = \"Multitenant\"\n"
+  },
+  {
+    "file": "django_multitenant/backends/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "django_multitenant/backends/postgresql/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "django_multitenant/backends/postgresql/base.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import logging\nimport django\nfrom django.db.backends.postgresql.base import (\n    DatabaseFeatures as PostgresqlDatabaseFeatures,\n    DatabaseWrapper as PostgresqlDatabaseWrapper,\n    DatabaseSchemaEd"
+  },
+  {
+    "file": "django_multitenant/db/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "django_multitenant/db/migrations/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from .distribute import *\n"
+  },
+  {
+    "file": "django_multitenant/db/migrations/distribute.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from django.apps.registry import apps as global_apps\nfrom django.db.migrations.operations.base import Operation\nfrom django.db.migrations.state import _get_app_label_and_model_name\n\nfrom django_multit"
+  },
+  {
+    "file": "django_multitenant/deletion.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import operator\nfrom functools import reduce\n\nimport django\nfrom django.db.models import Q\n\nfrom .utils import get_current_tenant, get_tenant_filters\n\n\ndef related_objects(obj, *args):\n    \"\"\"\n    Ove"
+  },
+  {
+    "file": "django_multitenant/django_mt_environment.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import importlib\n\n\ndef import_drf_or_die():\n    try:\n        importlib.import_module(\"rest_framework\")\n    except ImportError as e:\n        raise ImportError(\n            \"Django Multitenant requires "
+  },
+  {
+    "file": "django_multitenant/django_multitenant.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "django_multitenant/exceptions.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "class EmptyTenant(Exception):\n    pass\n"
+  },
+  {
+    "file": "django_multitenant/fields.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import logging\nimport django\nfrom django.db import models\nfrom django.db.models.sql.where import WhereNode\nfrom django.conf import settings\n\nfrom .exceptions import EmptyTenant\nfrom .utils import get_"
+  },
+  {
+    "file": "django_multitenant/middlewares.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from django_multitenant.utils import set_current_tenant\n\nfrom django_multitenant.views import get_tenant\n\n\nclass MultitenantMiddleware:\n    def __init__(self, get_response):\n        self.get_response "
+  },
+  {
+    "file": "django_multitenant/mixins.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import logging\n\nfrom django.db.models.sql import DeleteQuery, UpdateQuery\nfrom django.db.models.deletion import Collector\nfrom django.db.utils import NotSupportedError\nfrom django.conf import settings"
+  },
+  {
+    "file": "django_multitenant/models.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import logging\n\nfrom django.db import models\n\nfrom .mixins import TenantManagerMixin, TenantModelMixin\n\n\nlogger = logging.getLogger(__name__)\n\n\nclass TenantManager(TenantManagerMixin, models.Manager):"
+  },
+  {
+    "file": "django_multitenant/query.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from django.db import connections, transaction\nfrom django.db.models import Q\nfrom django.db.models.sql.constants import (\n    GET_ITERATOR_CHUNK_SIZE,\n    NO_RESULTS,\n)\nfrom django.conf import settin"
+  },
+  {
+    "file": "django_multitenant/settings.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from django.conf import settings\n\nAPP_NAMESPACE = \"DJANGO_MULTITENANT\"\n\nTENANT_COOKIE_NAME = getattr(settings, \"TENANT_COOKIE_NAME\", \"tenant_id\")\nTENANT_MODEL_NAME = getattr(settings, \"TENANT_MODEL_NA"
+  },
+  {
+    "file": "django_multitenant/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import inspect\n\nfrom django.apps import apps\nfrom .settings import TENANT_USE_ASGIREF\n\n\nif TENANT_USE_ASGIREF:\n    # asgiref must be installed, its included with Django >= 3.0\n    from asgiref.local i"
+  },
+  {
+    "file": "django_multitenant/views.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# pylint: disable=unused-import\nimport django_multitenant.django_mt_environment\nfrom django_multitenant.utils import set_current_tenant\nfrom django_multitenant.models import TenantModel\nfrom rest_fram"
+  },
+  {
+    "file": "docker-compose.yml",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "version: '2.1'\n\nservices:\n  master:\n    container_name: \"${COMPOSE_PROJECT_NAME:-citus}_master\"\n    image: 'citusdata/citus:${CITUS_VERSION:-11.2}'\n    ports: [ '5600:5432' ]\n    labels: [ 'com.citusd"
+  },
+  {
+    "file": "manage.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python\nimport os\nimport sys\n\n\nSUPPORTED_ENVS = \"tests\"\n\nSETTINGS_MODULES = {\n    \"test\": \"django_multitenant.tests.settings\",\n}\n\nENV = os.environ.get(\"ENV\", \"test\")\nENV = ENV.lower()\n\ni"
+  },
+  {
+    "file": "requirements/release-requirements.txt",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#\n# This file is autogenerated by pip-compile with Python 3.8\n# by the following command:\n#\n#    pip-compile --output-file=requirements/release-requirements.txt --resolver=backtracking requirements/re"
+  },
+  {
+    "file": "requirements/release.in",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "twine\nbuild\n"
+  },
+  {
+    "file": "requirements/static-analysis-requirements.txt",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#\n# This file is autogenerated by pip-compile with Python 3.8\n# by the following command:\n#\n#    pip-compile --output-file=requirements/static-analysis-requirements.txt --resolver=backtracking require"
+  },
+  {
+    "file": "requirements/static-analysis.in",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "Django>=3.2.9\nblack\npsycopg2-binary\nexam\npytest\npytest-cov\npytest-django\nprospector[with_everything]\npylint < 2.16\nSphinx\nsphinxnotes.strike\nsphinx_rtd_theme\ndjangorestframework\n"
+  },
+  {
+    "file": "setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from setuptools import setup, find_packages\nfrom os import path\nfrom io import open\n\n# read the contents of your README file\nthis_directory = path.dirname(path.abspath(__file__))\n\nwith open(path.join("
+  }
+]
