@@ -1,0 +1,56 @@
+[
+  {
+    "file": "gan/app.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin python3\n\nimport torch\nfrom sources.inference import inference\nfrom sources.config_loader import Config\nfrom fastapi import FastAPI\nimport uvicorn\n\napp = FastAPI()\n\n@app.post(\"/infer\")\ndef i"
+  },
+  {
+    "file": "gan/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin python3\n\nimport argparse\nimport torch\nfrom sources.training import training\nfrom sources.inference import inference\nfrom sources.config_loader import Config\n\nparser = argparse.ArgumentParse"
+  },
+  {
+    "file": "gan/sources/config_loader.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import json\n\nclass Config:\n    def __init__(self):\n        self.saveroot = None\n        self.dataroot = None\n        self.num_epochs = None\n        self.original_image_size = None\n        self.image_s"
+  },
+  {
+    "file": "gan/sources/discriminator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import torch\nimport torch.nn as nn\nimport math\n\ndef conv_output_size(input_size, kernel_size, stride, padding):\n    return math.floor((input_size + 2 * padding - kernel_size) / stride) + 1\n\nclass Disc"
+  },
+  {
+    "file": "gan/sources/generator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import torch\nimport torch.nn as nn\n\nclass Generator(nn.Module):\n    def __init__(self, config):\n        super(Generator, self).__init__()\n        ks = 4\n        stride = 2\n        pad = 1\n        \n   "
+  },
+  {
+    "file": "gan/sources/inference.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin python3\n\nimport matplotlib.pyplot as plt\nimport librosa\nimport torch\nimport numpy as np\nimport cv2\nfrom scipy.io.wavfile import write\n\ndef mel_to_waveform(S_dB, sr=22050, n_fft=1024, hop_le"
+  },
+  {
+    "file": "gan/sources/notify.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport json\nimport requests\nimport datetime\nfrom google_auth_oauthlib.flow import InstalledAppFlow\nfrom googleapiclient.discovery import build\nfrom requests import HTTPError\nimport base64\nfr"
+  },
+  {
+    "file": "gan/sources/plotting.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import numpy as np\nimport torchvision.utils as vutils\nfrom matplotlib import pyplot as plt\n\ndef plot_loss(G_losses, D_losses):\n    plt.figure(figsize=(10,5))\n    plt.title(\"Generator and Discriminator"
+  },
+  {
+    "file": "gan/sources/training.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin python3\n\nimport os\nimport random\n\nimport torch\nimport torch.nn as nn\nimport torch.nn.parallel\nimport torch.optim as optim\nimport torch.utils.data\nimport torchvision.utils as vutils\nimport t"
+  }
+]
