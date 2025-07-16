@@ -1,0 +1,236 @@
+[
+  {
+    "file": "api.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\nimport os, sys\nimport uvicorn\nimport aiofiles\nimport configparser\nimport asyncio\nimport time\nfrom typing import List\nfrom fastapi import FastAPI\nfrom fastapi.responses import J"
+  },
+  {
+    "file": "cli.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin python3\n\nimport sys\nimport argparse\nimport configparser\nimport asyncio\n\nfrom sources.llm_provider import Provider\nfrom sources.interaction import Interaction\nfrom sources.agents import Agen"
+  },
+  {
+    "file": "llm_server/app.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin python3\n\nimport argparse\nimport time\nfrom flask import Flask, jsonify, request\n\nfrom sources.llamacpp_handler import LlamacppLLM\nfrom sources.ollama_handler import OllamaLLM\n\nparser = argpa"
+  },
+  {
+    "file": "llm_server/sources/cache.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport json\nfrom pathlib import Path\n\nclass Cache:\n    def __init__(self, cache_dir='.cache', cache_file='messages.json'):\n        self.cache_dir = Path(cache_dir)\n        self.cache_file = "
+  },
+  {
+    "file": "llm_server/sources/decorator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\ndef timer_decorator(func):\n    \"\"\"\n    Decorator to measure the execution time of a function.\n    Usage:\n    @timer_decorator\n    def my_function():\n        # code to execute\n    \"\"\"\n    from time im"
+  },
+  {
+    "file": "llm_server/sources/generator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nimport threading\nimport logging\nfrom abc import abstractmethod\nfrom .cache import Cache\n\nclass GenerationState:\n    def __init__(self):\n        self.lock = threading.Lock()\n        self.last_complete"
+  },
+  {
+    "file": "llm_server/sources/llamacpp_handler.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nfrom .generator import GeneratorLLM\nfrom llama_cpp import Llama\nfrom .decorator import timer_decorator\n\nclass LlamacppLLM(GeneratorLLM):\n\n    def __init__(self):\n        \"\"\"\n        Handle generation"
+  },
+  {
+    "file": "llm_server/sources/ollama_handler.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nimport time\nfrom .generator import GeneratorLLM\nfrom .cache import Cache\nimport ollama\n\nclass OllamaLLM(GeneratorLLM):\n\n    def __init__(self):\n        \"\"\"\n        Handle generation using Ollama.\n   "
+  },
+  {
+    "file": "setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from setuptools import setup, find_packages\n\nwith open(\"README.md\", \"r\", encoding=\"utf-8\") as fh:\n    long_description = fh.read()\n\nsetup(\n    name=\"agenticSeek\",\n    version=\"0.1.0\",\n    author=\"Foso"
+  },
+  {
+    "file": "sources/agents/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nfrom .agent import Agent\nfrom .code_agent import CoderAgent\nfrom .casual_agent import CasualAgent\nfrom .file_agent import FileAgent\nfrom .planner_agent import PlannerAgent\nfrom .browser_agent import "
+  },
+  {
+    "file": "sources/agents/agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nfrom typing import Tuple, Callable\nfrom abc import abstractmethod\nimport os\nimport random\nimport time\n\nimport asyncio\nfrom concurrent.futures import ThreadPoolExecutor\n\nfrom sources.memory import Mem"
+  },
+  {
+    "file": "sources/agents/browser_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import re\nimport time\nfrom datetime import date\nfrom typing import List, Tuple, Type, Dict\nfrom enum import Enum\nimport asyncio\n\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources"
+  },
+  {
+    "file": "sources/agents/casual_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\n\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.agents.agent import Agent\nfrom sources.tools.searxSearch import searxSearch\nfrom sources.tools.flightSearch impo"
+  },
+  {
+    "file": "sources/agents/code_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import platform, os\nimport asyncio\n\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.agents.agent import Agent, executorResult\nfrom sources.tools.C_Interpreter import CInterpret"
+  },
+  {
+    "file": "sources/agents/file_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\n\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.agents.agent import Agent\nfrom sources.tools.fileFinder import FileFinder\nfrom sources.tools.BashInterpreter imp"
+  },
+  {
+    "file": "sources/agents/mcp_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport asyncio\n\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.agents.agent import Agent\nfrom sources.tools.mcpFinder import MCP_finder\nfrom sources.memory import Me"
+  },
+  {
+    "file": "sources/agents/planner_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import json\nfrom typing import List, Tuple, Type, Dict\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.agents.agent import Agent\nfrom sources.agents.code_agent import CoderAgen"
+  },
+  {
+    "file": "sources/interaction.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import readline\nfrom typing import List, Tuple, Type, Dict\n\nfrom sources.text_to_speech import Speech\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.router import AgentRouter\n"
+  },
+  {
+    "file": "sources/language.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from typing import List, Tuple, Type, Dict\nimport re\nimport langid\nfrom transformers import MarianMTModel, MarianTokenizer\n\nfrom sources.utility import pretty_print, animate_thinking\nfrom sources.logg"
+  },
+  {
+    "file": "sources/llm_provider.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport platform\nimport socket\nimport subprocess\nimport time\nfrom urllib.parse import urlparse\n\nimport httpx\nimport requests\nfrom dotenv import load_dotenv\nfrom ollama import Client as Ollama"
+  },
+  {
+    "file": "sources/logger.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os, sys\nfrom typing import List, Tuple, Type, Dict\nimport datetime\nimport logging\n\nclass Logger:\n    def __init__(self, log_filename):\n        self.folder = '.logs'\n        self.create_folder(s"
+  },
+  {
+    "file": "sources/memory.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import time\nimport datetime\nimport uuid\nimport os\nimport sys\nimport json\nfrom typing import List, Tuple, Type, Dict\nimport torch\nfrom transformers import AutoTokenizer, AutoModelForSeq2SeqLM\nimport co"
+  },
+  {
+    "file": "sources/schemas.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nfrom typing import Tuple, Callable\nfrom pydantic import BaseModel\nfrom sources.utility import pretty_print\n\nclass QueryRequest(BaseModel):\n    query: str\n    tts_enabled: bool = True\n\n    def __str__"
+  },
+  {
+    "file": "sources/speech_to_text.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "from colorama import Fore\nfrom typing import List, Tuple, Type, Dict\nimport queue\nimport threading\nimport numpy as np\nimport time\n\nIMPORT_FOUND = True\n\ntry:\n    import torch\n    import librosa\n    imp"
+  },
+  {
+    "file": "sources/text_to_speech.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "import os, sys\nimport re\nimport platform\nimport subprocess\nfrom sys import modules\nfrom typing import List, Tuple, Type, Dict\n\nIMPORT_FOUND = True\ntry:\n    from kokoro import KPipeline\n    from IPytho"
+  },
+  {
+    "file": "sources/tools/BashInterpreter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nimport os, sys\nimport re\nfrom io import StringIO\nimport subprocess\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.p"
+  },
+  {
+    "file": "sources/tools/C_Interpreter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import subprocess\nimport os, sys\nimport tempfile\nimport re\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirna"
+  },
+  {
+    "file": "sources/tools/GoInterpreter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import subprocess\nimport os, sys\nimport tempfile\nimport re\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirna"
+  },
+  {
+    "file": "sources/tools/JavaInterpreter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import subprocess\nimport os, sys\nimport tempfile\nimport re\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirna"
+  },
+  {
+    "file": "sources/tools/PyInterpreter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nimport sys\nimport os\nimport re\nfrom io import StringIO\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname("
+  },
+  {
+    "file": "sources/tools/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from .PyInterpreter import PyInterpreter\nfrom .BashInterpreter import BashInterpreter\nfrom .fileFinder import FileFinder\n\n__all__ = [\"PyInterpreter\", \"BashInterpreter\", \"FileFinder\", \"webSearch\", \"Fli"
+  },
+  {
+    "file": "sources/tools/fileFinder.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os, sys\nimport stat\nimport mimetypes\nimport configparser\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.path."
+  },
+  {
+    "file": "sources/tools/flightSearch.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os, sys\nimport requests\nimport dotenv\n\ndotenv.load_dotenv()\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.pa"
+  },
+  {
+    "file": "sources/tools/mcpFinder.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os, sys\nimport requests\nfrom urllib.parse import urljoin\nfrom typing import Dict, Any, Optional\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(o"
+  },
+  {
+    "file": "sources/tools/safety.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport sys\n\nunsafe_commands_unix = [\n    \"rm\",           # File/directory removal\n    \"dd\",           # Low-level disk writing\n    \"mkfs\",         # Filesystem formatting\n    \"chmod\",       "
+  },
+  {
+    "file": "sources/tools/searxSearch.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "import requests\nfrom bs4 import BeautifulSoup\nimport os\n\nif __name__ == \"__main__\": # if running as a script for individual testing\n    sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname("
+  },
+  {
+    "file": "sources/tools/tools.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\n\"\"\"\ndefine a generic tool class, any tool can be used by the agent.\n\nA tool can be used by a llm like so:\n```<tool name>\n<code or query to execute>\n```\n\nwe call these \"blocks\".\n\nFor example:\n```pytho"
+  },
+  {
+    "file": "sources/tools/webSearch.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "\nimport os\nimport requests\nimport dotenv\n\ndotenv.load_dotenv()\n\nfrom sources.tools.tools import Tools\nfrom sources.utility import animate_thinking, pretty_print\n\n\"\"\"\nWARNING\nwebSearch is fully depreca"
+  },
+  {
+    "file": "sources/utility.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\nfrom colorama import Fore\nfrom termcolor import colored\nimport platform\nimport threading\nimport itertools\nimport time\n\nthinking_event = threading.Event()\ncurrent_animation_thread = None\n\ndef get_colo"
+  }
+]
