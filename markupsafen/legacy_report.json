@@ -1,0 +1,26 @@
+[
+  {
+    "file": "bench.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import subprocess\nimport sys\n\nfor name, s in (\n    (\"short escape\", '\"<strong>Hello, World!</strong>\"'),\n    (\"long escape\", '\"Hello, World!\" * 1000'),\n    (\"short plain\", '\"Hello, World!\"'),\n    (\"lo"
+  },
+  {
+    "file": "setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport platform\nimport sys\n\nfrom setuptools import Extension\nfrom setuptools import setup\nfrom setuptools.command.build_ext import build_ext\nfrom setuptools.errors import CCompilerError\nfrom"
+  },
+  {
+    "file": "src/markupsafe/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from __future__ import annotations\n\nimport collections.abc as cabc\nimport string\nimport typing as t\n\ntry:\n    from ._speedups import _escape_inner\nexcept ImportError:\n    from ._native import _escape_"
+  },
+  {
+    "file": "src/markupsafe/_native.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "def _escape_inner(s: str, /) -> str:\n    return (\n        s.replace(\"&\", \"&amp;\")\n        .replace(\">\", \"&gt;\")\n        .replace(\"<\", \"&lt;\")\n        .replace(\"'\", \"&#39;\")\n        .replace('\"', \"&#34"
+  }
+]
