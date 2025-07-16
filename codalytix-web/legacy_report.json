@@ -1,0 +1,134 @@
+[
+  {
+    "file": ".gitignore",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.\n\n# dependencies\n/node_modules\n/.pnp\n.pnp.*\n.yarn/*\n!.yarn/patches\n!.yarn/plugins\n!.yarn/releases\n!.yarn/versions\n\n"
+  },
+  {
+    "file": "README.md",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).\n\n## Getting Started\n\nFirst, run the development se"
+  },
+  {
+    "file": "components.json",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "{\n  \"$schema\": \"https://ui.shadcn.com/schema.json\",\n  \"style\": \"new-york\",\n  \"rsc\": true,\n  \"tsx\": true,\n  \"tailwind\": {\n    \"config\": \"\",\n    \"css\": \"src/app/globals.css\",\n    \"baseColor\": \"stone\",\n "
+  },
+  {
+    "file": "eslint.config.mjs",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import { dirname } from \"path\";\nimport { fileURLToPath } from \"url\";\nimport { FlatCompat } from \"@eslint/eslintrc\";\n\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = dirname(__file"
+  },
+  {
+    "file": "next.config.ts",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import type { NextConfig } from \"next\";\n\nconst nextConfig: NextConfig = {\n  /* config options here */\n};\n\nexport default nextConfig;\n"
+  },
+  {
+    "file": "package.json",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "{\n  \"name\": \"codalytix-web\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"postinstall\": \"prisma generate\"\n "
+  },
+  {
+    "file": "postcss.config.mjs",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "const config = {\n  plugins: [\"@tailwindcss/postcss\"],\n};\n\nexport default config;\n"
+  },
+  {
+    "file": "prisma/schema.prisma",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge func"
+  },
+  {
+    "file": "src/app/api/saveRequest/route.ts",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import { NextResponse } from 'next/server'\nimport { prisma } from '@/lib/prisma'  // \u2705 Use singleton\n\nexport async function POST(req: Request) {\n  const data = await req.json()\n\n  const saved = await "
+  },
+  {
+    "file": "src/app/favicon.ico",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\u0000\u0000\u0001\u0000\u0004\u0000\u0010\u0010\u0000\u0000\u0001\u0000 \u0000(\u0005\u0000\u0000F\u0000\u0000\u0000  \u0000\u0000\u0001\u0000 \u0000(\u0014\u0000\u0000n\u0005\u0000\u000000\u0000\u0000\u0001\u0000 \u0000(-\u0000\u0000\ufffd\u0019\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0000 \u0000\ufffd\u001e\u0000\u0000\ufffdF\u0000\u0000(\u0000\u0000\u0000\u0010\u0000\u0000\u0000 \u0000\u0000\u0000\u0001\u0000 \u0000\u0000\u0000\u0000\u0000\u0000\u0005\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000$\u0000\u0000\u0000]\u0000\u0000\u0000\ufffd\u0000\u0000\u0000\ufffd\u0000\u0000\u0000]\u0000\u0000\u0000$\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000 \u0000\u0000\u0000\ufffd\u0000\u0000\u0000\ufffd\u0000\u0000"
+  },
+  {
+    "file": "src/app/globals.css",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "@import \"tailwindcss\";\n@import \"tw-animate-css\";\n\n@custom-variant dark (&:is(.dark *));\n\n@theme inline {\n  --color-background: var(--background);\n  --color-foreground: var(--foreground);\n  --font-sans"
+  },
+  {
+    "file": "src/app/layout.tsx",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import type { Metadata } from 'next'\nimport LayoutShell from '@/components/LayoutShell'\nimport './globals.css'\n\nexport const metadata: Metadata = {\n  title: 'Codalytix 360 IQ\u2122',\n  description: 'AI-pow"
+  },
+  {
+    "file": "src/app/page.tsx",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "'use client'\n\n//import Link from 'next/link'\nimport Image from 'next/image'\nimport IFRSChart from '@/components/IFRSChart'\nimport { ArrowRight } from 'lucide-react'\nimport TechDebtDonut from '@/compon"
+  },
+  {
+    "file": "src/app/verticals/page.tsx",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import TechDebtDonut from '@/components/TechDebtDonut'\nexport default function Verticals() {\n  const packs = [\n    {\n      name: 'Core Code Compliance Navigator',\n      vertical: 'Financial Services',"
+  },
+  {
+    "file": "src/components/IFRSChart.tsx",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "'use client'\n\nimport { Bar } from 'react-chartjs-2'\nimport 'chart.js/auto'\n\nconst categories = [\n  'Business',\n  'Technical',\n  'Product Mgt',\n  'Sales',\n  'Cost-Value',\n  'Marketing',\n  'IP/Thought',"
+  },
+  {
+    "file": "src/components/LayoutShell.tsx",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "'use client'\n\nimport Link from 'next/link'\nimport Image from 'next/image'\nimport { useEffect, useState } from 'react'\nimport { Link as ScrollLink } from 'react-scroll'\nimport clsx from 'clsx'\nimport {"
+  },
+  {
+    "file": "src/components/TechDebtDonut.tsx",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "'use client'\n\nimport { Doughnut } from 'react-chartjs-2'\nimport 'chart.js/auto'\n\nexport default function TechDebtDonut() {\n  const data = {\n    labels: ['Legacy APIs', 'Deprecated Libs', 'Low Test Cov"
+  },
+  {
+    "file": "src/lib/prisma.ts",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "// src/lib/prisma.ts\nimport { PrismaClient } from '@prisma/client'\n\nconst globalForPrisma = globalThis as unknown as {\n  prisma: PrismaClient | undefined\n}\n\nexport const prisma =\n  globalForPrisma.pri"
+  },
+  {
+    "file": "src/lib/utils.ts",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import { clsx, type ClassValue } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n"
+  },
+  {
+    "file": "tailwind.config.js",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  content: ['./src/**/*.{ts,tsx}'],\n  theme: {\n    extend: {\n      fontFamily: {\n        heading: ['var(--font-heading)', 'sans-serif'],\n"
+  },
+  {
+    "file": "tsconfig.json",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2017\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"allowJs\": true,\n    \"skipLibCheck\": true,\n    \"strict\": true,\n    \"noEmit\": true,\n    \"esModuleInter"
+  },
+  {
+    "file": "vercel.json",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "{\n  \"buildCommand\": \"npm run build\",\n  \"ignoreCommand\": \"false\"\n}\n"
+  }
+]
