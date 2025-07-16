@@ -1,0 +1,1196 @@
+[
+  {
+    "file": "cookbook/pocketflow-a2a/a2a_client.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nimport asyncclick as click # Using asyncclick for async main\nfrom uuid import uuid4\nimport json # For potentially inspecting raw errors\nimport anyio\nimport functools\nimport logging\n\n# I"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/a2a_server.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import click\nimport logging\nimport os\n\n# Import from the common code you copied\nfrom common.server import A2AServer\nfrom common.types import AgentCard, AgentCapabilities, AgentSkill, MissingAPIKeyErro"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/client/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from .client import A2AClient\nfrom .card_resolver import A2ACardResolver\n\n__all__ = [\"A2AClient\", \"A2ACardResolver\"]\n"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/client/card_resolver.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import httpx\nfrom common.types import (\n    AgentCard,\n    A2AClientJSONError,\n)\nimport json\n\n\nclass A2ACardResolver:\n    def __init__(self, base_url, agent_card_path=\"/.well-known/agent.json\"):\n     "
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/client/client.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import httpx\nfrom httpx_sse import connect_sse\nfrom typing import Any, AsyncIterable\nfrom common.types import (\n    AgentCard,\n    GetTaskRequest,\n    SendTaskRequest,\n    SendTaskResponse,\n    JSONRP"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/server/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from .server import A2AServer\nfrom .task_manager import TaskManager, InMemoryTaskManager\n\n__all__ = [\"A2AServer\", \"TaskManager\", \"InMemoryTaskManager\"]\n"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/server/server.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from starlette.applications import Starlette\nfrom starlette.responses import JSONResponse\nfrom sse_starlette.sse import EventSourceResponse\nfrom starlette.requests import Request\nfrom common.types imp"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/server/task_manager.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from abc import ABC, abstractmethod\nfrom typing import Union, AsyncIterable, List\nfrom common.types import Task\nfrom common.types import (\n    JSONRPCResponse,\n    TaskIdParams,\n    TaskQueryParams,\n "
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/server/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from common.types import (\n    JSONRPCResponse,\n    ContentTypeNotSupportedError,\n    UnsupportedOperationError,\n)\nfrom typing import List\n\n\ndef are_modalities_compatible(\n    server_output_modes: Lis"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/types.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from typing import Union, Any\nfrom pydantic import BaseModel, Field, TypeAdapter\nfrom typing import Literal, List, Annotated, Optional\nfrom datetime import datetime\nfrom pydantic import model_validato"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/utils/in_memory_cache.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"In Memory Cache utility.\"\"\"\n\nimport threading\nimport time\nfrom typing import Any, Dict, Optional\n\n\nclass InMemoryCache:\n    \"\"\"A thread-safe Singleton class to manage cache data.\n\n    Ensures only "
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/common/utils/push_notification_auth.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from jwcrypto import jwk\nimport uuid\nfrom starlette.responses import JSONResponse\nfrom starlette.requests import Request\nfrom typing import Any\n\nimport jwt\nimport time\nimport json\nimport hashlib\nimpor"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import DecideAction, SearchWeb, AnswerQuestion\n\ndef create_agent_flow():\n    \"\"\"\n    Create and connect the nodes to form a complete agent flow.\n    \n    The flo"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nfrom flow import create_agent_flow\n\ndef main():\n    \"\"\"Simple function to process a question.\"\"\"\n    # Default question\n    default_question = \"Who won the Nobel Prize in Physics 2024?\"\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils import call_llm, search_web\nimport yaml\n\nclass DecideAction(Node):\n    def prep(self, shared):\n        \"\"\"Prepare the context and question for the decision-makin"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/task_manager.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# FILE: pocketflow_a2a_agent/task_manager.py\nimport logging\nfrom typing import AsyncIterable, Union\nimport asyncio\n\n# Import from the common code you copied\nfrom common.server.task_manager import InMe"
+  },
+  {
+    "file": "cookbook/pocketflow-a2a/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\nfrom duckduckgo_search import DDGS\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.comp"
+  },
+  {
+    "file": "cookbook/pocketflow-agent/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import DecideAction, SearchWeb, AnswerQuestion\n\ndef create_agent_flow():\n    \"\"\"\n    Create and connect the nodes to form a complete agent flow.\n    \n    The flo"
+  },
+  {
+    "file": "cookbook/pocketflow-agent/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nfrom flow import create_agent_flow\n\ndef main():\n    \"\"\"Simple function to process a question.\"\"\"\n    # Default question\n    default_question = \"Who won the Nobel Prize in Physics 2024?\"\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-agent/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils import call_llm, search_web_duckduckgo\nimport yaml\n\nclass DecideAction(Node):\n    def prep(self, shared):\n        \"\"\"Prepare the context and question for the dec"
+  },
+  {
+    "file": "cookbook/pocketflow-agent/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\nfrom duckduckgo_search import DDGS\nimport requests\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = "
+  },
+  {
+    "file": "cookbook/pocketflow-async-basic/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"AsyncFlow implementation for recipe finder.\"\"\"\n\nfrom pocketflow import AsyncFlow, Node\nfrom nodes import FetchRecipes, SuggestRecipe, GetApproval\n\nclass NoOp(Node):\n    \"\"\"Node that does nothing, u"
+  },
+  {
+    "file": "cookbook/pocketflow-async-basic/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nfrom flow import create_flow\n\nasync def main():\n    \"\"\"Run the recipe finder flow.\"\"\"\n    # Create flow\n    flow = create_flow()\n    \n    # Create shared store\n    shared = {}\n    \n    "
+  },
+  {
+    "file": "cookbook/pocketflow-async-basic/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import AsyncNode\nfrom utils import fetch_recipes, call_llm_async, get_user_input\n\nclass FetchRecipes(AsyncNode):\n    \"\"\"AsyncNode that fetches recipes.\"\"\"\n    \n    async def prep_async"
+  },
+  {
+    "file": "cookbook/pocketflow-async-basic/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nimport aiohttp\nfrom openai import AsyncOpenAI\n\nasync def fetch_recipes(ingredient):\n    \"\"\"Fetch recipes from an API asynchronously.\"\"\"\n    print(f\"Fetching recipes for {ingredient}...\""
+  },
+  {
+    "file": "cookbook/pocketflow-batch-flow/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow, BatchFlow\nfrom nodes import LoadImage, ApplyFilter, SaveImage\n\ndef create_base_flow():\n    \"\"\"Create the base Flow for processing a single image.\"\"\"\n    # Create nodes\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-batch-flow/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom PIL import Image\nimport numpy as np\nfrom flow import create_flow\n\ndef main():\n    # Create and run flow\n    print(\"Processing images with filters...\")\n    \n    flow = create_flow()\n    "
+  },
+  {
+    "file": "cookbook/pocketflow-batch-flow/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"Node implementations for image processing.\"\"\"\n\nimport os\nfrom PIL import Image, ImageEnhance, ImageFilter\nfrom pocketflow import Node\n\nclass LoadImage(Node):\n    \"\"\"Node that loads an image file.\"\""
+  },
+  {
+    "file": "cookbook/pocketflow-batch-node/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow, Node\nfrom nodes import CSVProcessor\n\nclass ShowStats(Node):\n    \"\"\"Node to display the final statistics.\"\"\"\n    \n    def prep(self, shared):\n        \"\"\"Get statistics from"
+  },
+  {
+    "file": "cookbook/pocketflow-batch-node/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom flow import create_flow\n\ndef main():\n    \"\"\"Run the batch processing example.\"\"\"\n    # Create data directory if it doesn't exist\n    os.makedirs(\"data\", exist_ok=True)\n    \n    # Create"
+  },
+  {
+    "file": "cookbook/pocketflow-batch-node/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import pandas as pd\nfrom pocketflow import BatchNode\n\nclass CSVProcessor(BatchNode):\n    \"\"\"BatchNode that processes a large CSV file in chunks.\"\"\"\n    \n    def __init__(self, chunk_size=1000):\n      "
+  },
+  {
+    "file": "cookbook/pocketflow-batch/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport time\nfrom pocketflow import BatchNode, Flow\nfrom utils import call_llm\n\nclass TranslateTextNode(BatchNode):\n    def prep(self, shared):\n        text = shared.get(\"text\", \"(No text pro"
+  },
+  {
+    "file": "cookbook/pocketflow-batch/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from anthropic import Anthropic\nimport os\n\ndef call_llm(prompt):\n    client = Anthropic(api_key=os.environ.get(\"ANTHROPIC_API_KEY\", \"your-api-key\"))\n    response = client.messages.create(\n        mode"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-guardrail/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow\nfrom utils import call_llm\n\nclass UserInputNode(Node):\n    def prep(self, shared):\n        # Initialize messages if this is the first run\n        if \"messages\" not in"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-guardrail/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\n\ndef call_llm(messages):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    \n    response = client.chat.completions.create(\n        m"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import GetUserQuestionNode, RetrieveNode, AnswerNode, EmbedNode\n\ndef create_chat_flow():\n    # Create the nodes\n    question_node = GetUserQuestionNode()\n    ret"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import chat_flow\n\ndef run_chat_memory_demo():\n    \"\"\"\n    Run an interactive chat interface with memory retrieval.\n    \n    Features:\n    1. Maintains a window of the 3 most recent conversat"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils.vector_index import create_index, add_vector, search_vectors\nfrom utils.call_llm import call_llm\nfrom utils.get_embedding import get_embedding\n\nclass GetUserQues"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\n"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(messages):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    \n    response = client.chat.completions.create(\n        m"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/utils/get_embedding.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport numpy as np\nfrom openai import OpenAI\n\ndef get_embedding(text):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"YOUR_API_KEY\"))\n    \n    response = client.embeddings.cre"
+  },
+  {
+    "file": "cookbook/pocketflow-chat-memory/utils/vector_index.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import numpy as np\nimport faiss\n\ndef create_index(dimension=1536):\n    return faiss.IndexFlatL2(dimension)\n\ndef add_vector(index, vector):\n    # Make sure the vector is a numpy array with the right sh"
+  },
+  {
+    "file": "cookbook/pocketflow-chat/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow\nfrom utils import call_llm\n\nclass ChatNode(Node):\n    def prep(self, shared):\n        # Initialize messages if this is the first run\n        if \"messages\" not in shar"
+  },
+  {
+    "file": "cookbook/pocketflow-chat/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\n\ndef call_llm(messages):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    \n    response = client.chat.completions.create(\n        m"
+  },
+  {
+    "file": "cookbook/pocketflow-cli-hitl/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import GetTopicNode, GenerateJokeNode, GetFeedbackNode\n\ndef create_joke_flow() -> Flow:\n    \"\"\"Creates and returns the joke generation flow.\"\"\"\n    get_topic_nod"
+  },
+  {
+    "file": "cookbook/pocketflow-cli-hitl/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_joke_flow\n\ndef main():\n    \"\"\"Main function to run the joke generator application.\"\"\"\n    print(\"Welcome to the Command-Line Joke Generator!\")\n\n    shared = {\n        \"topic\": "
+  },
+  {
+    "file": "cookbook/pocketflow-cli-hitl/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils.call_llm import call_llm\n\nclass GetTopicNode(Node):\n    \"\"\"Prompts the user to enter the topic for the joke.\"\"\"\n    def exec(self, _shared):\n        return input"
+  },
+  {
+    "file": "cookbook/pocketflow-cli-hitl/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-cli-hitl/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from anthropic import Anthropic\nimport os\n\ndef call_llm(prompt: str) -> str:\n    client = Anthropic(api_key=os.environ.get(\"ANTHROPIC_API_KEY\", \"your-anthropic-api-key\")) # Default if key not found\n  "
+  },
+  {
+    "file": "cookbook/pocketflow-code-generator/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import GenerateTestCases, ImplementFunction, RunTests, Revise\n\ndef create_code_generator_flow():\n    \"\"\"Creates and returns the code generator flow.\"\"\"\n    # Cre"
+  },
+  {
+    "file": "cookbook/pocketflow-code-generator/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nfrom flow import create_code_generator_flow\n\ndef main():\n    \"\"\"Runs the PocketFlow Code Generator application.\"\"\"\n    print(\"Starting PocketFlow Code Generator...\")\n    \n    # Check if pro"
+  },
+  {
+    "file": "cookbook/pocketflow-code-generator/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import yaml\nfrom pocketflow import Node, BatchNode\nfrom utils.call_llm import call_llm\nfrom utils.code_executor import execute_python\n\nclass GenerateTestCases(Node):\n    def prep(self, shared):\n      "
+  },
+  {
+    "file": "cookbook/pocketflow-code-generator/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-code-generator/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from anthropic import Anthropic\nimport os\n\ndef call_llm(prompt):\n    client = Anthropic(api_key=os.environ.get(\"ANTHROPIC_API_KEY\", \"your-api-key\"))\n    response = client.messages.create(\n        mode"
+  },
+  {
+    "file": "cookbook/pocketflow-code-generator/utils/code_executor.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nimport io\nimport traceback\nfrom contextlib import redirect_stdout, redirect_stderr\n\ndef execute_python(function_code, input):\n    try:\n        namespace = {\"__builtins__\": __builtins__}\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-communication/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"Flow configuration for the communication example.\"\"\"\n\nfrom pocketflow import Flow\nfrom nodes import TextInput, WordCounter, ShowStats, EndNode\n\ndef create_flow():\n    \"\"\"Create and configure the fl"
+  },
+  {
+    "file": "cookbook/pocketflow-communication/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_flow\n\ndef main():\n    \"\"\"Run the communication example.\"\"\"\n    flow = create_flow()\n    shared = {}\n    flow.run(shared)\n\nif __name__ == \"__main__\":\n    main() "
+  },
+  {
+    "file": "cookbook/pocketflow-communication/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"Node implementations for the communication example.\"\"\"\n\nfrom pocketflow import Node\n\nclass EndNode(Node):\n    \"\"\"Node that handles flow termination.\"\"\"\n    pass\n\nclass TextInput(Node):\n    \"\"\"Node "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-background/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import GenerateOutline, WriteContent, ApplyStyle\n\ndef create_article_flow():\n    \"\"\"\n    Create and configure the article writing workflow\n    \"\"\"\n    # Create n"
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-background/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nimport json\nimport uuid\nfrom fastapi import FastAPI, BackgroundTasks, Form\nfrom fastapi.responses import StreamingResponse\nfrom fastapi.staticfiles import StaticFiles\nfrom fastapi.respo"
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-background/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import yaml\nfrom pocketflow import Node, BatchNode\nfrom utils.call_llm import call_llm\n\nclass GenerateOutline(Node):\n    def prep(self, shared):\n        return shared[\"topic\"]\n    \n    def exec(self, "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-background/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-background/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n        model=\"gpt-"
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-hitl/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import AsyncFlow\nfrom nodes import ProcessNode, ReviewNode, ResultNode\n\ndef create_feedback_flow():\n    \"\"\"Creates the minimal feedback workflow.\"\"\"\n    process_node = ProcessNode()\n  "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-hitl/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import qa_flow\n\n# Example main function\n# Please replace this with your own main function\ndef main():\n    shared = {\n        \"question\": \"In one sentence, what's the end of universe?\",\n     "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-hitl/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, AsyncNode\nfrom utils.process_task import process_task\n\nclass ProcessNode(Node):\n    def prep(self, shared):\n        task_input = shared.get(\"task_input\", \"No input\")\n     "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-hitl/server.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nimport uuid\nimport json\nimport os\nfrom fastapi import FastAPI, Request, HTTPException, status, BackgroundTasks # Import BackgroundTasks\nfrom fastapi.responses import HTMLResponse, Strea"
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-hitl/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-hitl/utils/process_task.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import time\n\ndef process_task(input_data):\n    \"\"\"Minimal simulation of processing the input data.\"\"\"\n    print(f\"Processing: '{input_data[:50]}...'\")\n    \n    # Simulate work\n    time.sleep(2)\n\n    p"
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-websocket/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import AsyncFlow\nfrom nodes import StreamingChatNode\n\ndef create_streaming_chat_flow():\n    chat_node = StreamingChatNode()\n    return AsyncFlow(start=chat_node) "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-websocket/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import json\nfrom fastapi import FastAPI, WebSocket, WebSocketDisconnect\nfrom fastapi.staticfiles import StaticFiles\nfrom fastapi.responses import FileResponse\nfrom flow import create_streaming_chat_fl"
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-websocket/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nimport json\nfrom pocketflow import AsyncNode\nfrom utils.stream_llm import stream_llm\n\nclass StreamingChatNode(AsyncNode):\n    async def prep_async(self, shared):\n        user_message = "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-websocket/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Utils package for FastAPI WebSocket Chat Interface "
+  },
+  {
+    "file": "cookbook/pocketflow-fastapi-websocket/utils/stream_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import AsyncOpenAI\n\nasync def stream_llm(messages):\n    client = AsyncOpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    \n    stream = await client.chat.complet"
+  },
+  {
+    "file": "cookbook/pocketflow-flow/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow\n\nclass TextInput(Node):\n    def prep(self, shared):\n        \"\"\"Get text input from user.\"\"\"\n        if \"text\" not in shared:\n            text = input(\"\\nEnter text to"
+  },
+  {
+    "file": "cookbook/pocketflow-flow/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import flow\n\ndef main():\n    print(\"\\nWelcome to Text Converter!\")\n    print(\"=========================\")\n    \n    # Initialize shared store\n    shared = {}\n    \n    # Run the flow\n    flow."
+  },
+  {
+    "file": "cookbook/pocketflow-google-calendar/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import CreateCalendarEventNode, ListCalendarEventsNode, ListCalendarsNode\nfrom datetime import datetime, timedelta\n\ndef create_calendar_flow():\n    \"\"\"Creates a "
+  },
+  {
+    "file": "cookbook/pocketflow-google-calendar/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils.google_calendar import create_event, list_events, list_calendar_lists\nfrom datetime import datetime, timedelta\n\nclass CreateCalendarEventNode(Node):\n    def prep"
+  },
+  {
+    "file": "cookbook/pocketflow-google-calendar/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-google-calendar/utils/google_calendar.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from google.oauth2.credentials import Credentials\nfrom google_auth_oauthlib.flow import InstalledAppFlow\nfrom google.auth.transport.requests import Request\nfrom googleapiclient.discovery import build\n"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\n\nfrom nodes import (\n    DecideAction,\n    CheckWeather,\n    BookHotel,\n    FollowUp,\n    ResultNotification,\n)\n\n\ndef create_flow():\n    \"\"\"\n    Create and connect the node"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import time\nimport uuid\nfrom concurrent.futures import ThreadPoolExecutor\nfrom queue import Queue\n\nimport gradio as gr\nfrom gradio import ChatMessage\n\nfrom flow import create_flow\n\n# create global thr"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from datetime import datetime\nfrom queue import Queue\n\nimport yaml\nfrom pocketflow import Node\n\nfrom utils.call_llm import call_llm\nfrom utils.call_mock_api import call_book_hotel_api, call_check_weat"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\n\nfrom openai import OpenAI\nfrom openai.types.chat.chat_completion import ChatCompletion\n\napi_key = os.getenv(\"OPENAI_API_KEY\")\nbase_url = \"https://api.openai.com/v1\"\nmodel = \"gpt-4o\"\n\n\ndef c"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/utils/call_mock_api.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import random\nfrom datetime import date, datetime\n\n\ndef call_check_weather_api(city: str, date: date | None):\n    if date is None:\n        date = datetime.now().date()\n\n    current_date = datetime.now"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/utils/conversation.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "conversation_cache = {}\n\n\ndef load_conversation(conversation_id: str):\n    print(f\"Loading conversation {conversation_id}\")\n    return conversation_cache.get(conversation_id, {})\n\n\ndef save_conversati"
+  },
+  {
+    "file": "cookbook/pocketflow-gradio-hitl/utils/format_chat_history.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "def format_chat_history(history):\n    \"\"\"\n    Format the chat history for LLM\n\n    Args:\n        history (list): The chat history list, each element contains role and content\n\n    Returns:\n        str"
+  },
+  {
+    "file": "cookbook/pocketflow-hello-world/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow\nfrom utils.call_llm import call_llm\n\n# An example node and flow\n# Please replace this with your own node and flow\nclass AnswerNode(Node):\n    def prep(self, shared):\n"
+  },
+  {
+    "file": "cookbook/pocketflow-hello-world/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import qa_flow\n\n# Example main function\n# Please replace this with your own main function\ndef main():\n    shared = {\n        \"question\": \"In one sentence, what's the end of universe?\",\n     "
+  },
+  {
+    "file": "cookbook/pocketflow-hello-world/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-hello-world/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=\"YOUR_API_KEY_HERE\")\n    r = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[{\"role\": \"user\","
+  },
+  {
+    "file": "cookbook/pocketflow-llm-streaming/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import time\nimport threading\nfrom pocketflow import Node, Flow\nfrom utils import fake_stream_llm, stream_llm\n\nclass StreamNode(Node):\n    def prep(self, shared):\n        # Create interrupt event\n     "
+  },
+  {
+    "file": "cookbook/pocketflow-llm-streaming/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\n\ndef stream_llm(prompt):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n\n    # Make a streaming chat completion request\n    response "
+  },
+  {
+    "file": "cookbook/pocketflow-majority-vote/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import argparse\nfrom pocketflow import BatchNode, Flow\nimport collections\nfrom utils import call_llm\nimport yaml\n\nclass MajorityVoteNode(BatchNode):\n    def prep(self, shared):\n        question = shar"
+  },
+  {
+    "file": "cookbook/pocketflow-majority-vote/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from anthropic import Anthropic\nimport os\n\ndef call_llm(prompt):\n    client = Anthropic(api_key=os.environ.get(\"ANTHROPIC_API_KEY\", \"your-api-key\"))\n    response = client.messages.create(\n        mode"
+  },
+  {
+    "file": "cookbook/pocketflow-map-reduce/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import ReadResumesNode, EvaluateResumesNode, ReduceResultsNode\n\ndef create_resume_processing_flow():\n    \"\"\"Create a map-reduce flow for processing resumes.\"\"\"\n "
+  },
+  {
+    "file": "cookbook/pocketflow-map-reduce/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_resume_processing_flow\n\ndef main():\n    # Initialize shared store\n    shared = {}\n    \n    # Create the resume processing flow\n    resume_flow = create_resume_processing_flow()"
+  },
+  {
+    "file": "cookbook/pocketflow-map-reduce/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, BatchNode\nfrom utils import call_llm\nimport yaml\nimport os\n\nclass ReadResumesNode(Node):\n    \"\"\"Map phase: Read all resumes from the data directory into shared storage.\"\"\""
+  },
+  {
+    "file": "cookbook/pocketflow-map-reduce/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n        model=\"gpt-"
+  },
+  {
+    "file": "cookbook/pocketflow-mcp/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow\nfrom utils import call_llm, get_tools, call_tool\nimport yaml\nimport sys\n\nclass GetToolsNode(Node):\n    def prep(self, shared):\n        \"\"\"Initialize and get tools\"\"\"\n"
+  },
+  {
+    "file": "cookbook/pocketflow-mcp/simple_server.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from fastmcp import FastMCP\n\n# Create a named server\nmcp = FastMCP(\"Math Operations Server\")\n\n# Define mathematical operation tools\n@mcp.tool()\ndef add(a: int, b: int) -> int:\n    \"\"\"Add two numbers t"
+  },
+  {
+    "file": "cookbook/pocketflow-mcp/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\nimport asyncio\nfrom mcp import ClientSession, StdioServerParameters\nfrom mcp.client.stdio import stdio_client\n\n# Global flag to control whether to use MCP or local "
+  },
+  {
+    "file": "cookbook/pocketflow-multi-agent/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nfrom pocketflow import AsyncNode, AsyncFlow\nfrom utils import call_llm\n\nclass AsyncHinter(AsyncNode):\n    async def prep_async(self, shared):\n        # Wait for message from guesser (or"
+  },
+  {
+    "file": "cookbook/pocketflow-multi-agent/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n        model=\"gpt-"
+  },
+  {
+    "file": "cookbook/pocketflow-nested-batch/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom pocketflow import Flow, BatchFlow\nfrom nodes import LoadGrades, CalculateAverage\n\ndef create_base_flow():\n    \"\"\"Create base flow for processing one student's grades.\"\"\"\n    # Create no"
+  },
+  {
+    "file": "cookbook/pocketflow-nested-batch/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom flow import create_flow\n\ndef create_sample_data():\n    \"\"\"Create sample grade files.\"\"\"\n    # Create directory structure\n    os.makedirs(\"school/class_a\", exist_ok=True)\n    os.makedirs"
+  },
+  {
+    "file": "cookbook/pocketflow-nested-batch/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom pocketflow import Node\n\nclass LoadGrades(Node):\n    \"\"\"Node that loads grades from a student's file.\"\"\"\n    \n    def prep(self, shared):\n        \"\"\"Get file path from parameters.\"\"\"\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-node/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow\nfrom utils.call_llm import call_llm\n\nclass Summarize(Node):\n    def prep(self, shared):\n        \"\"\"Read and preprocess data from shared store.\"\"\"\n        return share"
+  },
+  {
+    "file": "cookbook/pocketflow-node/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import flow\n\ndef main():\n    # Example text to summarize\n    text = \"\"\"\n    PocketFlow is a minimalist LLM framework that models workflows as a Nested Directed Graph.\n    Nodes handle simple"
+  },
+  {
+    "file": "cookbook/pocketflow-node/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=\"YOUR_API_KEY_HERE\")\n    r = client.chat.completions.create(\n        model=\"gpt-4o\",\n        messages=[{\"role\": \"user\","
+  },
+  {
+    "file": "cookbook/pocketflow-parallel-batch-flow/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"Flow definitions for parallel image processing.\"\"\"\n\nfrom pocketflow import AsyncParallelBatchFlow, AsyncBatchFlow\nfrom nodes import LoadImage, ApplyFilter, SaveImage\n\ndef create_base_flow():\n    \"\""
+  },
+  {
+    "file": "cookbook/pocketflow-parallel-batch-flow/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport asyncio\nimport time\nfrom flow import create_flows\n\ndef get_image_paths():\n    \"\"\"Get paths of existing images in the images directory.\"\"\"\n    images_dir = \"images\"\n    if not os.path."
+  },
+  {
+    "file": "cookbook/pocketflow-parallel-batch-flow/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"AsyncNode implementations for image processing.\"\"\"\nimport os\nimport asyncio\nfrom PIL import Image, ImageFilter\nimport numpy as np\nfrom pocketflow import AsyncNode\n\nclass LoadImage(AsyncNode):\n    \""
+  },
+  {
+    "file": "cookbook/pocketflow-parallel-batch/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio\nimport time\nimport os\nfrom pocketflow import AsyncFlow, AsyncParallelBatchNode\nfrom utils import call_llm\n\n# --- Node Definitions ---\n\nclass TranslateTextNodeParallel(AsyncParallelBatch"
+  },
+  {
+    "file": "cookbook/pocketflow-parallel-batch/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport asyncio\nfrom anthropic import AsyncAnthropic\n\n# Async version of the simple wrapper, using Anthropic\nasync def call_llm(prompt):\n    \"\"\"Async wrapper for Anthropic API call.\"\"\"\n    cl"
+  },
+  {
+    "file": "cookbook/pocketflow-rag/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import EmbedDocumentsNode, CreateIndexNode, EmbedQueryNode, RetrieveDocumentNode, ChunkDocumentsNode, GenerateAnswerNode\n\ndef get_offline_flow():\n    # Create of"
+  },
+  {
+    "file": "cookbook/pocketflow-rag/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nfrom flow import offline_flow, online_flow\n\ndef run_rag_demo():\n    \"\"\"\n    Run a demonstration of the RAG system.\n    \n    This function:\n    1. Indexes a set of sample documents (offline "
+  },
+  {
+    "file": "cookbook/pocketflow-rag/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, Flow, BatchNode\nimport numpy as np\nimport faiss\nfrom utils import call_llm, get_embedding, fixed_size_chunk\n\n# Nodes for the offline flow\nclass ChunkDocumentsNode(BatchNod"
+  },
+  {
+    "file": "cookbook/pocketflow-rag/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nimport numpy as np\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n"
+  },
+  {
+    "file": "cookbook/pocketflow-streamlit-fsm/app.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import streamlit as st\nimport base64\nfrom flow import create_generation_flow\n\nst.title(\"PocketFlow Image Generation HITL\")\n\n# Initialize session state for shared store\nif 'stage' not in st.session_sta"
+  },
+  {
+    "file": "cookbook/pocketflow-streamlit-fsm/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import GenerateImageNode\n\ndef create_generation_flow():\n    \"\"\"Creates a flow for image generation (initial or regeneration).\"\"\"\n    generate_image_node = Genera"
+  },
+  {
+    "file": "cookbook/pocketflow-streamlit-fsm/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils.generate_image import generate_image\n\nclass GenerateImageNode(Node):\n    \"\"\"Generates image from text prompt using OpenAI API.\"\"\"\n    \n    def prep(self, shared)"
+  },
+  {
+    "file": "cookbook/pocketflow-streamlit-fsm/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-streamlit-fsm/utils/generate_image.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\nimport base64\n\ndef generate_image(prompt: str) -> str:\n    client = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n    \n    response = client.images.generate(\n        "
+  },
+  {
+    "file": "cookbook/pocketflow-structured-output/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import yaml\nimport os  # Needed for the utils import below\nfrom pocketflow import Node, Flow\nfrom utils import call_llm # Assumes utils.py with call_llm exists\n\nclass ResumeParserNode(Node):\n    def p"
+  },
+  {
+    "file": "cookbook/pocketflow-structured-output/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n        model=\"gpt-"
+  },
+  {
+    "file": "cookbook/pocketflow-supervisor/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import DecideAction, SearchWeb, UnreliableAnswerNode, SupervisorNode\n\ndef create_agent_inner_flow():\n    \"\"\"\n    Create the inner research agent flow without sup"
+  },
+  {
+    "file": "cookbook/pocketflow-supervisor/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nfrom flow import create_agent_flow\n\ndef main():\n    \"\"\"Simple function to process a question with supervised answers.\"\"\"\n    # Default question\n    default_question = \"Who won the Nobel Pri"
+  },
+  {
+    "file": "cookbook/pocketflow-supervisor/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom utils import call_llm, search_web\nimport yaml\nimport random\n\nclass DecideAction(Node):\n    def prep(self, shared):\n        \"\"\"Prepare the context and question for the "
+  },
+  {
+    "file": "cookbook/pocketflow-supervisor/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\nfrom duckduckgo_search import DDGS\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.comp"
+  },
+  {
+    "file": "cookbook/pocketflow-tao/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# flow.py\n\nfrom pocketflow import Flow\nfrom nodes import ThinkNode, ActionNode, ObserveNode, EndNode\n\ndef create_tao_flow():\n    \"\"\"\n    Create a Thought-Action-Observation loop flow\n    \n    How the "
+  },
+  {
+    "file": "cookbook/pocketflow-tao/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# main.py\n\nfrom flow import create_tao_flow\n\ndef main():\n    \n    query = \"\"\"I need to understand the latest developments in artificial intelligence\"\"\"\n    \n    # Create shared data\n    shared = {\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-tao/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# nodes.py\n\nfrom pocketflow import Node\nimport yaml\nfrom utils import call_llm\n\nclass ThinkNode(Node):\n    def prep(self, shared):\n        \"\"\"Prepare the context needed for thinking\"\"\"\n        query ="
+  },
+  {
+    "file": "cookbook/pocketflow-tao/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# utils.py\n\nfrom openai import OpenAI\nimport os\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"Your Key Here\"),base_url=os.environ.get(\"OPENAI_API_BASE\", \"You"
+  },
+  {
+    "file": "cookbook/pocketflow-text2sql/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow, Node\nfrom nodes import GetSchema, GenerateSQL, ExecuteSQL, DebugSQL\n\ndef create_text_to_sql_flow():\n    \"\"\"Creates the text-to-SQL workflow with a debug loop.\"\"\"\n    get_s"
+  },
+  {
+    "file": "cookbook/pocketflow-text2sql/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nimport os\nfrom flow import create_text_to_sql_flow\nfrom populate_db import populate_database, DB_FILE\n\ndef run_text_to_sql(natural_query, db_path=DB_FILE, max_debug_retries=3):\n    if not o"
+  },
+  {
+    "file": "cookbook/pocketflow-text2sql/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sqlite3\nimport time\nimport yaml # Import yaml here as nodes use it\nfrom pocketflow import Node\nfrom utils.call_llm import call_llm\n\nclass GetSchema(Node):\n    def prep(self, shared):\n        re"
+  },
+  {
+    "file": "cookbook/pocketflow-text2sql/populate_db.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sqlite3\nimport os\nimport random\nfrom datetime import datetime, timedelta\n\nDB_FILE = \"ecommerce.db\"\n\ndef populate_database(db_file=DB_FILE):\n    \"\"\"Creates and populates the SQLite database.\"\"\"\n"
+  },
+  {
+    "file": "cookbook/pocketflow-text2sql/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n        model=\"gpt-"
+  },
+  {
+    "file": "cookbook/pocketflow-thinking/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import ChainOfThoughtNode\n\ndef create_chain_of_thought_flow():\n    # Create a ChainOfThoughtNode\n    cot_node = ChainOfThoughtNode(max_retries=3, wait=10)\n    \n "
+  },
+  {
+    "file": "cookbook/pocketflow-thinking/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sys\nfrom flow import create_chain_of_thought_flow\n\ndef main():\n    # Default question\n    default_question = \"You keep rolling a fair die until you roll three, four, five in that order consecut"
+  },
+  {
+    "file": "cookbook/pocketflow-thinking/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# cookbook/pocketflow-thinking/nodes.py\nfrom pocketflow import Node\nimport yaml\nfrom utils import call_llm\nimport textwrap\n\n# Helper function to format structured plan for printing\ndef format_plan(pla"
+  },
+  {
+    "file": "cookbook/pocketflow-thinking/utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from anthropic import Anthropic\nimport os\n\ndef call_llm(prompt):\n    client = Anthropic(api_key=os.environ.get(\"ANTHROPIC_API_KEY\", \"your-api-key\"))\n    response = client.messages.create(\n        mode"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import CrawlWebsiteNode, AnalyzeContentBatchNode, GenerateReportNode\n\ndef create_flow() -> Flow:\n    \"\"\"Create and configure the crawling flow\n    \n    Returns:\n"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom flow import create_flow\n\ndef main():\n    \"\"\"Run the web crawler flow\"\"\"\n    \n    # Get website URL from user\n    url = input(\"Enter website URL to crawl (e.g., https://example.com): \")\n"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, BatchNode\nfrom tools.crawler import WebCrawler\nfrom tools.parser import analyze_site\nfrom typing import List, Dict\n\nclass CrawlWebsiteNode(Node):\n    \"\"\"Node to crawl a we"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/tools/crawler.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import requests\nfrom bs4 import BeautifulSoup\nfrom urllib.parse import urljoin, urlparse\nfrom typing import Dict, List, Set\n\nclass WebCrawler:\n    \"\"\"Simple web crawler that extracts content and follo"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/tools/parser.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from typing import Dict, List\nfrom utils.call_llm import call_llm\n\ndef analyze_content(content: Dict) -> Dict:\n    \"\"\"Analyze webpage content using LLM\n    \n    Args:\n        content (Dict): Webpage c"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-tool-crawler/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\n\n# Initialize OpenAI client\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\ndef call_llm(prompt: str) -> str:\n    \"\"\"Call OpenAI API to analyze text\n    \n    "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-database/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import InitDatabaseNode, CreateTaskNode, ListTasksNode\n\ndef create_database_flow():\n    \"\"\"Create a flow for database operations\"\"\"\n    \n    # Create nodes\n    i"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-database/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_database_flow\n\ndef main():\n    # Create the flow\n    flow = create_database_flow()\n    \n    # Prepare example task data\n    shared = {\n        \"task_title\": \"Example Task\",\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-database/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom tools.database import execute_sql, init_db\n\nclass InitDatabaseNode(Node):\n    \"\"\"Node for initializing the database\"\"\"\n    \n    def exec(self, _):\n        init_db()\n  "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-database/tools/database.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sqlite3\nfrom typing import List, Tuple, Any\n\ndef execute_sql(query: str, params: Tuple = None) -> List[Tuple[Any, ...]]:\n    \"\"\"Execute a SQL query and return results\n    \n    Args:\n        que"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-database/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-tool-embeddings/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import EmbeddingNode\n\ndef create_embedding_flow():\n    \"\"\"Create a flow for text embedding\"\"\"\n    # Create embedding node\n    embedding = EmbeddingNode()\n    \n  "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-embeddings/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_embedding_flow\n\ndef main():\n    # Create the flow\n    flow = create_embedding_flow()\n    \n    # Example text\n    text = \"What's the meaning of life?\"\n    \n    # Prepare shared "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-embeddings/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom tools.embeddings import get_embedding\n\nclass EmbeddingNode(Node):\n    \"\"\"Node for getting embeddings from OpenAI API\"\"\"\n    \n    def prep(self, shared):\n        # Get "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-embeddings/tools/embeddings.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from utils.call_llm import client\n\ndef get_embedding(text):\n    response = client.embeddings.create(\n        model=\"text-embedding-ada-002\",\n        input=text\n    )\n    return response.data[0].embedd"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-embeddings/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-tool-embeddings/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\n# No need for dotenv if using system environment variables\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\ndef call_llm(prompt):    \n    r = client.chat.comp"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import ProcessPDFBatchNode\n\ndef create_vision_flow():\n    \"\"\"Create a flow for batch PDF processing with Vision API\"\"\"\n    return Flow(start=ProcessPDFBatchNode("
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_vision_flow\n\ndef main():\n    # Create and run flow\n    flow = create_vision_flow()\n    shared = {}\n    flow.run(shared)\n    \n    # Print results\n    if \"results\" in shared:\n   "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node, BatchNode\nfrom tools.pdf import pdf_to_images\nfrom tools.vision import extract_text_from_image\nfrom typing import List, Dict, Any\nfrom pathlib import Path\nimport os\n\nclass"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/tools/pdf.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import fitz  # PyMuPDF\nfrom PIL import Image\nimport io\nimport base64\nfrom typing import List, Tuple\n\ndef pdf_to_images(pdf_path: str, max_size: int = 2000) -> List[Tuple[Image.Image, int]]:\n    \"\"\"Con"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/tools/vision.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from PIL import Image\nfrom utils.call_llm import client\nfrom tools.pdf import image_to_base64\n\ndef extract_text_from_image(image: Image.Image, prompt: str = None) -> str:\n    \"\"\"Extract text from imag"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-tool-pdf-vision/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\nfrom pathlib import Path\n\n# Get the project root directory (parent of utils directory)\nROOT_DIR = Path(__file__).parent.parent\n\n# Initialize OpenAI client with API "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import SearchNode, AnalyzeResultsNode\n\ndef create_flow() -> Flow:\n    \"\"\"Create and configure the search flow\n    \n    Returns:\n        Flow: Configured flow rea"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom flow import create_flow\n\ndef main():\n    \"\"\"Run the web search flow\"\"\"\n    \n    # Get search query from user\n    query = input(\"Enter search query: \")\n    if not query:\n        print(\"E"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Node\nfrom tools.search import SearchTool\nfrom tools.parser import analyze_results\nfrom typing import List, Dict\n\nclass SearchNode(Node):\n    \"\"\"Node to perform web search using "
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/tools/parser.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from typing import Dict, List\nfrom utils.call_llm import call_llm\n\ndef analyze_results(query: str, results: List[Dict]) -> Dict:\n    \"\"\"Analyze search results using LLM\n    \n    Args:\n        query (s"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/tools/search.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom serpapi import GoogleSearch\nfrom typing import Dict, List, Optional\n\nclass SearchTool:\n    \"\"\"Tool for performing web searches using SerpAPI\"\"\"\n    \n    def __init__(self, api_key: Opti"
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-tool-search/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\nfrom pathlib import Path\n\n# Get the project root directory (parent of utils directory)\nROOT_DIR = Path(__file__).parent.parent\n\n# Initialize OpenAI client with API "
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nSetup script for PocketFlow Tracing cookbook.\n\nThis script helps install dependencies and verify the setup.\n\"\"\"\n\nimport subprocess\nimport sys\nimport os\n\n\ndef install_depende"
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/tracing/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nPocketFlow Tracing Module\n\nThis module provides observability and tracing capabilities for PocketFlow workflows\nusing Langfuse as the backend. It includes decorators and utilities to automatically"
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/tracing/config.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nConfiguration module for PocketFlow tracing with Langfuse.\n\"\"\"\n\nimport os\nfrom dataclasses import dataclass\nfrom typing import Optional\nfrom dotenv import load_dotenv\n\n\n@dataclass\nclass TracingCon"
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/tracing/core.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nCore tracing functionality for PocketFlow with Langfuse integration.\n\"\"\"\n\nimport json\nimport time\nimport uuid\nfrom typing import Any, Dict, Optional, Union\nfrom datetime import datetime\n\ntry:\n    "
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/tracing/decorator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nDecorator for tracing PocketFlow workflows with Langfuse.\n\"\"\"\n\nimport functools\nimport inspect\nimport uuid\nfrom typing import Any, Callable, Dict, Optional, Union\n\nfrom .config import TracingConfi"
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nUtility functions for PocketFlow tracing.\n\"\"\"\n\nfrom .setup import setup_tracing, test_langfuse_connection\n\n__all__ = ['setup_tracing', 'test_langfuse_connection']\n"
+  },
+  {
+    "file": "cookbook/pocketflow-tracing/utils/setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nSetup and testing utilities for PocketFlow tracing.\n\"\"\"\n\nimport os\nimport sys\nfrom typing import Optional\n\n# Add parent directory to path for imports\nsys.path.insert(0, os.path.dirname(os.path.dir"
+  },
+  {
+    "file": "cookbook/pocketflow-visualization/async_flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import AsyncNode, AsyncFlow\nimport asyncio\n\n\n# Define Payment Nodes\nclass ValidatePayment(AsyncNode):\n    async def exec_async(self, prep_res):\n        print(\"1.1.Validating payment..."
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import CaptureAudioNode, SpeechToTextNode, QueryLLMNode, TextToSpeechNode\n\ndef create_voice_chat_flow() -> Flow:\n    \"\"\"Creates and returns the voice chat flow.\""
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_voice_chat_flow\n\ndef main():\n    \"\"\"Runs the PocketFlow Voice Chat application.\"\"\"\n    print(\"Starting PocketFlow Voice Chat...\")\n    print(\"Speak your query after 'Listening f"
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import numpy as np\nimport scipy.io.wavfile\nimport io\nimport soundfile # For converting MP3 bytes to NumPy array\n\nfrom pocketflow import Node\nfrom utils.audio_utils import record_audio, play_audio_data"
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/utils/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/utils/audio_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import sounddevice as sd\nimport numpy as np\n\nDEFAULT_SAMPLE_RATE = 44100\nDEFAULT_CHANNELS = 1\nDEFAULT_CHUNK_SIZE_MS = 50  # Process audio in 50ms chunks for VAD\nDEFAULT_SILENCE_THRESHOLD_RMS = 0.01 # "
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from openai import OpenAI\nimport os\n\ndef call_llm(messages):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    \n    response = client.chat.completions.create(\n        m"
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/utils/speech_to_text.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\nimport io\n\ndef speech_to_text_api(audio_data: bytes, sample_rate: int):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\"))\n\n    # The API expects a file-"
+  },
+  {
+    "file": "cookbook/pocketflow-voice-chat/utils/text_to_speech.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef text_to_speech_api(text_to_synthesize: str):\n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\"))\n\n    response = client.audio.speech.create(\n        "
+  },
+  {
+    "file": "cookbook/pocketflow-workflow/flow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from pocketflow import Flow\nfrom nodes import GenerateOutline, WriteSimpleContent, ApplyStyle\n\ndef create_article_flow():\n    \"\"\"\n    Create and configure the article writing workflow\n    \"\"\"\n    # Cr"
+  },
+  {
+    "file": "cookbook/pocketflow-workflow/main.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from flow import create_article_flow\n\ndef run_flow(topic=\"AI Safety\"):\n    \"\"\"\n    Run the article writing workflow with a specific topic\n    \n    Args:\n        topic (str): The topic for the article\n"
+  },
+  {
+    "file": "cookbook/pocketflow-workflow/nodes.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import re\nfrom pocketflow import Node, BatchNode\nfrom utils.call_llm import call_llm\nimport yaml\n\nclass GenerateOutline(Node):\n    def prep(self, shared):\n        return shared[\"topic\"]\n    \n    def e"
+  },
+  {
+    "file": "cookbook/pocketflow-workflow/utils/call_llm.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import os\nfrom openai import OpenAI\n\ndef call_llm(prompt):    \n    client = OpenAI(api_key=os.environ.get(\"OPENAI_API_KEY\", \"your-api-key\"))\n    r = client.chat.completions.create(\n        model=\"gpt-"
+  },
+  {
+    "file": "pocketflow/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import asyncio, warnings, copy, time\n\nclass BaseNode:\n    def __init__(self): self.params,self.successors={},{}\n    def set_params(self,params): self.params=params\n    def next(self,node,action=\"defau"
+  },
+  {
+    "file": "setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from setuptools import setup, find_packages\n\nsetup(\n    name=\"pocketflow\",\n    version=\"0.0.2\",\n    packages=find_packages(),\n    author=\"Zachary Huang\",\n    author_email=\"zh2408@columbia.edu\",\n    de"
+  },
+  {
+    "file": "utils/update_pocketflow_mdc.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nScript to generate MDC files from the PocketFlow docs folder, creating one MDC file per MD file.\n\nUsage:\n    python update_pocketflow_mdc.py [--docs-dir PATH] [--rules-dir P"
+  }
+]
