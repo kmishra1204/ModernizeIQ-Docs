@@ -1,0 +1,92 @@
+[
+  {
+    "file": "Input Resources/iot_edge_to_cloud/greengrass/edge_streamer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import argparse, json, time, random, boto3\n# Simplified placeholder\ndef main(threshold):\n    while True:\n        accel = random.uniform(0,5)\n        if accel > threshold:\n            print(\"Trigger cl"
+  },
+  {
+    "file": "Input Resources/ml_training_platform/scripts/train.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import argparse, os, pandas as pd, joblib\nfrom sklearn.ensemble import GradientBoostingClassifier\n\ndef _parse():\n    p = argparse.ArgumentParser()\n    p.add_argument(\"--train\", type=str, default=\"/opt"
+  },
+  {
+    "file": "forge.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nforge.py \u2013 Doc-Forge Lite CLI\n=============================\n\nEntry-point that orchestrates the full pipeline:\n\n1.  Ingest the \u201cdataset\u201d folder \u2192 manifest (ingestion.py)  \n2.  Caption every archite"
+  },
+  {
+    "file": "make_reference.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# make_reference.py\nfrom docx import Document\nfrom docx.shared import Pt, RGBColor, Inches\nfrom docx.oxml import OxmlElement\nfrom docx.oxml.ns import qn\nimport pathlib, textwrap, shutil\n\ntemplates = p"
+  },
+  {
+    "file": "src/__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src/converter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nconverter.py \u2013 Doc-Forge Lite (v3.3)\n------------------------------------\n\u2022 Copies all architecture_* images and *.css into output/{slug}/  \n\u2022 Optionally renders a PlantUML sequence diagram \u2192 PNG "
+  },
+  {
+    "file": "src/cost_calculator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\ncost_calculator.py \u2013 Milestone 4 \u00b7 Phase 4-c\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nMultiply usage figures by unit prices and emit:\n  \u2022 pandas DataFrame  (returned to caller)\n  \u2022 CSV written"
+  },
+  {
+    "file": "src/cost_inputs.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\ncost_inputs.py  \u2013 Milestone 4 \u00b7 Phase 4-a\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u2022 Parse `cost_inputs.yaml` inside each dataset folder\n\u2022 Validate with Pydantic\n\u2022 Return { service \u2192 usage_dict }"
+  },
+  {
+    "file": "src/drafting.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\ndrafting_agent.py \u2013 Doc-Forge Lite  (Milestone 3 \u00b7 production-ready)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u2022 GPT-enriches diagram captions & bullet lists (self-audit"
+  },
+  {
+    "file": "src/drafting_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\ndrafting_agent.py \u2013 Doc-Forge Lite \u00b7 Milestone 3 (production-ready)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u2022 Enriches diagram captions & bullets (self-audited GPT calls"
+  },
+  {
+    "file": "src/ingestion.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from __future__ import annotations\nimport json, pathlib, re\nfrom dataclasses import dataclass, asdict\nfrom typing import List, Dict\n\nREQUIRED_TOP = {\"metadata.json\", \"README.md\"}\n\nIMG_PATTERN = re.com"
+  },
+  {
+    "file": "src/pricing_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\npricing_agent.py \u2013 Milestone 4 \u00b7 Phase 4-b\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u2022 Caches AWS Price-List JSON daily under src/pricing_cache/\n\u2022 Extracts a minimal set of on-demand prices the c"
+  },
+  {
+    "file": "src/store.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nstore.py\n--------\nVery small SQLite tracker for generated documents.\n\"\"\"\n\nimport sqlite3, datetime, pathlib\n\nDB_PATH = pathlib.Path(\"docforge.db\")\n\n\ndef _init_db():\n    \"\"\"Create table if not pres"
+  },
+  {
+    "file": "src/validation.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "import shutil, pathlib, sys\n\nREQUIRED_BINS = [\"pandoc\", \"wkhtmltopdf\"]\nREQUIRED_TEMPLATES = [\n    \"templates/design_doc_template.md.j2\",\n    \"templates/corporate.css\",\n]\n\ndef validate_runtime() -> Non"
+  },
+  {
+    "file": "src/vision_agent.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "\"\"\"\nvision_agent.py\n---------------------------------\nUses GPT-4o Vision to generate a title, caption, and key entities\nfor every architecture diagram image in a blueprint dataset.\n\nAssumes:\n* OPENAI_"
+  }
+]
