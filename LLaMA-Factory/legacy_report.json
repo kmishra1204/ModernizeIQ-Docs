@@ -1,0 +1,812 @@
+[
+  {
+    "file": "setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "evaluation\\ceval\\ceval.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n# Copyright 2020 The HuggingFace Datasets Authors and the current dataset script contributor.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\")"
+  },
+  {
+    "file": "evaluation\\cmmlu\\cmmlu.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n# Copyright 2020 The HuggingFace Datasets Authors and the current dataset script contributor.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\")"
+  },
+  {
+    "file": "evaluation\\mmlu\\mmlu.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n# Copyright 2020 The HuggingFace Datasets Authors and the current dataset script contributor.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\")"
+  },
+  {
+    "file": "scripts\\eval_bleu_rouge.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\llama_pro.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 Tencent Inc. and the LlamaFactory team.\n#\n# This code is inspired by the Tencent's LLaMA-Pro library.\n# https://github.com/TencentARC/LLaMA-Pro/blob/main/scripts/block_expansion.py\n#\n"
+  },
+  {
+    "file": "scripts\\loftq_init.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is based on the HuggingFace's PEFT library.\n# https://github.com/huggingface/peft/blob/v0.10.0/examples/loftq_finetuning/quan"
+  },
+  {
+    "file": "scripts\\pissa_init.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is based on the HuggingFace's PEFT library.\n# https://github.com/huggingface/peft/blob/v0.11.0/examples/pissa_finetuning/prep"
+  },
+  {
+    "file": "scripts\\qwen_omni_merge.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\vllm_infer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\convert_ckpt\\llamafy_baichuan2.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\convert_ckpt\\llamafy_qwen.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\convert_ckpt\\tiny_llama4.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\stat_utils\\cal_flops.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 Microsoft Corporation and the LlamaFactory team.\n#\n# This code is inspired by the Microsoft's DeepSpeed library.\n# https://www.deepspeed.ai/tutorials/flops-profiler/\n#\n# Licensed unde"
+  },
+  {
+    "file": "scripts\\stat_utils\\cal_lr.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 imoneoi and the LlamaFactory team.\n#\n# This code is inspired by the imoneoi's OpenChat library.\n# https://github.com/imoneoi/openchat/blob/3.6.0/ochat/training_deepspeed/train.py\n#\n# "
+  },
+  {
+    "file": "scripts\\stat_utils\\cal_mfu.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\stat_utils\\cal_ppl.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "scripts\\stat_utils\\length_cdf.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\api.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\train.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\webui.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\cli.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\launcher.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\api\\app.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\api\\chat.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\api\\common.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\api\\protocol.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\api\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\chat\\base_engine.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\chat\\chat_model.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 THUDM and the LlamaFactory team.\n#\n# This code is inspired by the THUDM's ChatGLM implementation.\n# https://github.com/THUDM/ChatGLM-6B/blob/main/cli_demo.py\n#\n# Licensed under the Ap"
+  },
+  {
+    "file": "src\\llamafactory\\chat\\hf_engine.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\chat\\sglang_engine.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\chat\\vllm_engine.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\chat\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\collator.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "# Copyright 2025 OpenAccess AI Collective and the LlamaFactory team.\n#\n# This code is inspired by the OpenAccess AI Collective's axolotl library.\n# https://github.com/OpenAccess-AI-Collective/axolotl/"
+  },
+  {
+    "file": "src\\llamafactory\\data\\converter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\data_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\formatter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\loader.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\mm_plugin.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's Transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src/transfo"
+  },
+  {
+    "file": "src\\llamafactory\\data\\parser.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\template.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\tool_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\feedback.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\pairwise.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\pretrain.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\processor_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\supervised.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\unsupervised.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\data\\processor\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\eval\\evaluator.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# This code is inspired by the Dan's test library.\n# https://github.com/hendrycks/test/blob/master/evaluate_flan.py\n#\n# Licensed under the Apache License, Ver"
+  },
+  {
+    "file": "src\\llamafactory\\eval\\template.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\eval\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\extras\\env.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src/transfo"
+  },
+  {
+    "file": "src\\llamafactory\\extras\\logging.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 Optuna, HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src"
+  },
+  {
+    "file": "src\\llamafactory\\extras\\misc.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's PEFT library.\n# https://github.com/huggingface/peft/blob/v0.10.0/src/peft/peft_model.py\n#\n# "
+  },
+  {
+    "file": "src\\llamafactory\\extras\\packages.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src/transfo"
+  },
+  {
+    "file": "src\\llamafactory\\extras\\ploting.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\extras\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\data_args.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\evaluation_args.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\finetuning_args.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\generating_args.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\model_args.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\parser.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\training_args.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\hparams\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\adapter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\loader.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\patcher.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\attention.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\checkpointing.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc., Daniel Han-Chen & the Unsloth team and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's Transformers and PEFT library,\n# https://github.com/hugg"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\embedding.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\kv_cache.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\liger_kernel.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\longlora.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 EleutherAI, HuggingFace Inc., Yukang Chen, and the LlamaFactory team.\n#\n# This code is based on the EleutherAI's GPT-NeoX and the HuggingFace's Transformers libraries.\n# https://githu"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\misc.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\mod.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\moe.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\packing.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 Musab Gultekin and the LlamaFactory team.\n#\n# This code is based on the Musab Gultekin's functionary library.\n# https://github.com/MeetKai/functionary/blob/main/functionary/train/pack"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\quantization.py",
+    "age_years": 3,
+    "has_marker": true,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's Transformers and Optimum library.\n# https://github.com/huggingface/transformers/blob/v4.41.0"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\rope.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 LMSYS and the LlamaFactory team.\n# Copyright 2023 Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li\n#\n# This code is inspired by the LMSYS's FastChat library.\n# htt"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\unsloth.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\valuehead.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\visual.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's Transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src/transfo"
+  },
+  {
+    "file": "src\\llamafactory\\model\\model_utils\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\third_party\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\third_party\\muon\\muon.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 Moonshot AI and the LlamaFactory team.\n#\n# This code is based on the MoonshotAI's Moonlight library.\n# https://github.com/MoonshotAI/Moonlight/blob/master/examples/toy_train.py\n# and "
+  },
+  {
+    "file": "src\\llamafactory\\third_party\\muon\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\callbacks.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\trainer_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the original GaLore's implementation: https://github.com/jiaweizzhao/GaLore\n# and the original LoRA+'s impleme"
+  },
+  {
+    "file": "src\\llamafactory\\train\\tuner.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\train\\dpo\\trainer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's TRL library.\n# https://github.com/huggingface/trl/blob/v0.8.0/trl/trainer/dpo_trainer.py\n#\n#"
+  },
+  {
+    "file": "src\\llamafactory\\train\\dpo\\workflow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's TRL library.\n# https://github.com/huggingface/trl/blob/v0.8.0/examples/scripts/dpo.py\n#\n# Li"
+  },
+  {
+    "file": "src\\llamafactory\\train\\dpo\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\kto\\trainer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's TRL library.\n# https://github.com/huggingface/trl/blob/v0.8.0/trl/trainer/kto_trainer.py\n#\n#"
+  },
+  {
+    "file": "src\\llamafactory\\train\\kto\\workflow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's TRL library.\n# https://github.com/huggingface/trl/blob/v0.8.0/examples/scripts/kto.py\n#\n# Li"
+  },
+  {
+    "file": "src\\llamafactory\\train\\kto\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\ppo\\ppo_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\ppo\\trainer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's TRL library.\n# https://github.com/huggingface/trl/blob/v0.8.0/trl/trainer/ppo_trainer.py\n#\n#"
+  },
+  {
+    "file": "src\\llamafactory\\train\\ppo\\workflow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's TRL library.\n# https://github.com/huggingface/trl/blob/v0.8.0/examples/scripts/ppo.py\n#\n# Li"
+  },
+  {
+    "file": "src\\llamafactory\\train\\ppo\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\pt\\trainer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\pt\\workflow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\train\\pt\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\rm\\metric.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\rm\\trainer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src/transfo"
+  },
+  {
+    "file": "src\\llamafactory\\train\\rm\\workflow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\train\\rm\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\train\\sft\\metric.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc., THUDM, and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library and the THUDM's ChatGLM implementation.\n# https://github.com/hu"
+  },
+  {
+    "file": "src\\llamafactory\\train\\sft\\trainer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/src/transfo"
+  },
+  {
+    "file": "src\\llamafactory\\train\\sft\\workflow.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 HuggingFace Inc. and the LlamaFactory team.\n#\n# This code is inspired by the HuggingFace's transformers library.\n# https://github.com/huggingface/transformers/blob/v4.40.0/examples/py"
+  },
+  {
+    "file": "src\\llamafactory\\train\\sft\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\chatter.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\common.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\control.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\css.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\engine.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\interface.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\manager.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\runner.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": ""
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\chatbot.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\data.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\eval.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\export.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\footer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\infer.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\top.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\train.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  },
+  {
+    "file": "src\\llamafactory\\webui\\components\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# Copyright 2025 the LlamaFactory team.\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy o"
+  }
+]
