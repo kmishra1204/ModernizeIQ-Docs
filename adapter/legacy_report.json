@@ -1,0 +1,50 @@
+[
+  {
+    "file": "setup.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nSetup script for NANDA Agent Framework\n\"\"\"\n\nfrom setuptools import setup, find_packages\nimport os\n\n# Read the requirements\ndef read_requirements(filename):\n    \"\"\"Read requi"
+  },
+  {
+    "file": "nanda_adapter\\cli.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nNANDA Agent Framework - Command Line Interface\n\"\"\"\n\ndef main():\n    \"\"\"Main CLI entry point\"\"\"\n    print(\"NANDA Agent Framework\")\n    print(\"Create custom agents with plugga"
+  },
+  {
+    "file": "nanda_adapter\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nNANDA Agent Framework - Customizable AI Agent Communication System\n\nThis package provides a framework for creating customizable AI agents with pluggable\nmessage improvement "
+  },
+  {
+    "file": "nanda_adapter\\core\\agent_bridge.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# agent_bridge.py\nimport os\nimport uuid\nimport traceback\nimport json\nimport threading\nimport requests\nfrom typing import Optional\nfrom datetime import datetime\nfrom anthropic import Anthropic, APIStat"
+  },
+  {
+    "file": "nanda_adapter\\core\\mcp_utils.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "from typing import Optional\nimport asyncio\nfrom contextlib import AsyncExitStack\nfrom mcp import ClientSession\nfrom mcp.client.stdio import stdio_client\n#from custom_transport import insecure_sse_clie"
+  },
+  {
+    "file": "nanda_adapter\\core\\nanda.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nNANDA - Custom Message Improvement for Agent Bridge\n- Accepts any custom improvement logic function\n- Creates agent_bridge server with custom improve_message_direct\n\"\"\"\n\nimp"
+  },
+  {
+    "file": "nanda_adapter\\core\\run_ui_agent_https.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "# run_agent_ui.py - with Flask API wrapper for multiple HTTPS servers\nimport os\nimport subprocess\nimport time\nimport requests\nimport sys\nimport signal\nimport argparse\nimport threading\nimport json\nfrom"
+  },
+  {
+    "file": "nanda_adapter\\core\\__init__.py",
+    "age_years": 3,
+    "has_marker": false,
+    "excerpt": "#!/usr/bin/env python3\n\"\"\"\nNANDA Agent Framework - Core Components\n\nThis module contains the core components of the NANDA agent framework.\n\"\"\"\n\nfrom .nanda import NANDA\nfrom .agent_bridge import (\n   "
+  }
+]
